@@ -36,7 +36,7 @@
 #ifdef _WINDOWS
 #   include <GL/wglew.h>
 #elif defined(_LINUX)
-#   include <GL/xglew.h>
+#   include <GL/glew.h>
 #endif
 #include <GLFW/glfw3.h> 
 

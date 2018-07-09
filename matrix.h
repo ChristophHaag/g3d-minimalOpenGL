@@ -12,6 +12,7 @@
 #include <iostream>
 #include <iomanip>
 #include <math.h>
+#include <cstring>
 
 #define PI (3.1415927f)
 
