@@ -12,9 +12,10 @@ and fixed it.
 
 # Yes, but I mean how do I use it
 
-I added openvr as a submodule, so you need to git clone with --recursive and download ~250mb of data for it. Sorry. You really only need `headers/openvr.h` and `openvr/bin/linux64/libopenvr_api.so`, the rest is baggage and old git history.
+I added openvr as a submodule, so you need to git clone with --recursive and download ~250mb of data for it. Sorry. You really only need `openvr/headers/openvr.h` and `openvr/bin/linux64/libopenvr_api.so`, the rest is baggage and old git history.
 
     git clone --recursive https://github.com/ChristophHaag/g3d-minimalOpenGL.git
+    cd g3d-minimalOpenGL
     mkdir build
     cd build
     cmake ..
