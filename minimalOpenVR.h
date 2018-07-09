@@ -119,7 +119,9 @@ void getEyeTransformations
         fprintf(stderr, "\n");
 #   endif
 
-    assert(trackedDevicePose[vr::k_unTrackedDeviceIndex_Hmd].bPoseIsValid);
+
+    // You can NOT assert the pose is valid. For example the light houses might not be in view of the Vive
+    //assert(trackedDevicePose[vr::k_unTrackedDeviceIndex_Hmd].bPoseIsValid);
     const vr::HmdMatrix34_t head = trackedDevicePose[vr::k_unTrackedDeviceIndex_Hmd].mDeviceToAbsoluteTracking;
 
     const vr::HmdMatrix34_t& ltMatrix = hmd->GetEyeToHeadTransform(vr::Eye_Left);
