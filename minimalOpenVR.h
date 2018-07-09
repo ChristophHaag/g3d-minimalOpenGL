@@ -19,7 +19,7 @@
   running an OpenVR program.
 */
 
-#include <openvr/openvr.h>
+#include <openvr/headers/openvr.h>
 #include <string>
 
 #ifdef _WINDOWS
@@ -133,8 +133,8 @@ void getEyeTransformations
         }
     }
 
-    const vr::HmdMatrix44_t& ltProj = hmd->GetProjectionMatrix(vr::Eye_Left,  -nearPlaneZ, -farPlaneZ, vr::API_OpenGL);
-    const vr::HmdMatrix44_t& rtProj = hmd->GetProjectionMatrix(vr::Eye_Right, -nearPlaneZ, -farPlaneZ, vr::API_OpenGL);
+    const vr::HmdMatrix44_t& ltProj = hmd->GetProjectionMatrix(vr::Eye_Left,  -nearPlaneZ, -farPlaneZ);
+    const vr::HmdMatrix44_t& rtProj = hmd->GetProjectionMatrix(vr::Eye_Right, -nearPlaneZ, -farPlaneZ);
 
     for (int r = 0; r < 4; ++r) {
         for (int c = 0; c < 4; ++c) {
@@ -149,10 +149,10 @@ void getEyeTransformations
 void submitToHMD(GLint ltEyeTexture, GLint rtEyeTexture, bool isGammaEncoded) {
     const vr::EColorSpace colorSpace = isGammaEncoded ? vr::ColorSpace_Gamma : vr::ColorSpace_Linear;
 
-    const vr::Texture_t lt = { reinterpret_cast<void*>(intptr_t(ltEyeTexture)), vr::API_OpenGL, colorSpace };
+    const vr::Texture_t lt = { reinterpret_cast<void*>(intptr_t(ltEyeTexture)), vr::TextureType_OpenGL, colorSpace };
     vr::VRCompositor()->Submit(vr::Eye_Left, &lt);
 
-    const vr::Texture_t rt = { reinterpret_cast<void*>(intptr_t(rtEyeTexture)), vr::API_OpenGL, colorSpace };
+    const vr::Texture_t rt = { reinterpret_cast<void*>(intptr_t(rtEyeTexture)), vr::TextureType_OpenGL, colorSpace };
     vr::VRCompositor()->Submit(vr::Eye_Right, &rt);
 
     // Tell the compositor to begin work immediately instead of waiting for the next WaitGetPoses() call

@@ -50,7 +50,7 @@
  */
 
 // Uncomment to add VR support
-//#define _VR
+#define _VR
 
 // To switch the box to a teapot, uncomment the following two lines
 //#include "teapot.h"
@@ -353,7 +353,7 @@ int main(const int argc, const char* argv[]) {
             glDrawElements(GL_TRIANGLES, numIndices, GL_UNSIGNED_INT, 0);
 #           ifdef _VR
             {
-                const vr::Texture_t tex = { reinterpret_cast<void*>(intptr_t(colorRenderTarget[eye])), vr::API_OpenGL, vr::ColorSpace_Gamma };
+                const vr::Texture_t tex = { reinterpret_cast<void*>(intptr_t(colorRenderTarget[eye])), vr::TextureType_OpenGL, vr::ColorSpace_Gamma };
                 vr::VRCompositor()->Submit(vr::EVREye(eye), &tex);
             }
 #           endif
